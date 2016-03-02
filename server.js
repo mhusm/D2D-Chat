@@ -1,4 +1,3 @@
-<!--
 /*
  * XD-MVC -- A framework for cross-device applications
  * Copyright (C) 2014-2015 Maria Husmann. All rights reserved.
@@ -19,28 +18,16 @@
  * See the README and LICENSE files for further information.
  *
  */
--->
+var XDmvcServer = require('xdmvcserver/xdmvcserver.js');
+var xdmvc = new XDmvcServer();
 
-img {
-	display: block;
-	max-width: 100%;
-    margin: auto;
-    pointer-events: none;
-    cursor: pointer;
-}
+var connect = require('connect'),
+    http = require('http'),
+	serveStatic = require('serve-static');
+var app = connect().use(serveStatic(__dirname + '/public'));
+var server = http.createServer(app);
 
-pointer-element {
-    display: inline-block;
-    max-width: 100%;
-}
+xdmvc.start();
+server.listen(8080);
 
 
-:host {
-	display: block;
-}
-
-paper-button[hidden] {
-    display: none;
-}
-
-/* TODO delete file? */
